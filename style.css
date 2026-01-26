@@ -1,0 +1,223 @@
+/* ============================
+   1. GLOBAL & VARIABLES
+   ============================ */
+/* Bringing in a signature font from Google to match "Amsterdam" vibes */
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+
+:root {
+  /* The Freesia Palette */
+  --freesia-blue: rgb(225, 244, 253); /* Your requested base color */
+  --fresh-white: #ffffff;
+  --leaf-green: #56ab2f; /* Fresh green for buttons */
+  --leaf-green-hover: #458a25;
+  --text-dark: #333333;
+  --text-grey: #666666;
+
+  /* Typography */
+  /* Aptos is a Microsoft font, so we provide backups like Arial or Helvetica */
+  --font-body: "Aptos", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-heading: "Amsterdam Signature", "Great Vibes", cursive;
+}
+
+* {
+  box-sizing: border-box; /* Makes padding calculate correctly */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--freesia-blue);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%; /* Prevents images from overflowing screens */
+  border-radius: 8px;
+}
+
+/* ============================
+   2. NAVIGATION BAR (Flexbox)
+   ============================ */
+header {
+  background-color: var(--fresh-white);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 1rem 0;
+  position: sticky; /* Keeps nav at top when scrolling */
+  top: 0;
+  z-index: 1000;
+}
+
+nav {
+  display: flex; /* Makes items sit in a row */
+  justify-content: space-between; /* Pushes logo left, links right */
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto; /* Centers the navbar container */
+  padding: 0 20px;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--leaf-green);
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px; /* Space between links */
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--leaf-green);
+}
+
+/* ============================
+   3. LAYOUT CONTAINERS
+   ============================ */
+main {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  min-height: 80vh; /* Ensures footer stays at bottom even on empty pages */
+}
+
+section {
+  margin-bottom: 60px;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  text-align: center;
+  color: var(--leaf-green);
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: var(--text-dark);
+  margin-bottom: 15px;
+}
+
+/* ============================
+   4. HOME PAGE (Hero)
+   ============================ */
+.hero {
+  text-align: center;
+  background-color: var(--fresh-white);
+  padding: 80px 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--text-grey);
+  margin-bottom: 30px;
+}
+
+/* THE BUTTONS */
+.btn-book,
+button[type="submit"] {
+  display: inline-block;
+  background-color: var(--leaf-green);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px; /* Rounded pill shape */
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition:
+    transform 0.2s,
+    background-color 0.3s;
+}
+
+.btn-book:hover,
+button[type="submit"]:hover {
+  background-color: var(--leaf-green-hover);
+  transform: translateY(-3px); /* Button moves up slightly */
+  box-shadow: 0 5px 15px rgba(86, 171, 47, 0.4);
+}
+
+/* ============================
+   5. SERVICES PAGE (Grid)
+   ============================ */
+/* We use Grid here to create rows of cards automatically */
+main:has(.service-package) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+/* Note: The h1 and p on services page need to span full width, 
+   so we wrap the services in a div in HTML or use this trick: */
+
+.service-package {
+  background-color: var(--fresh-white);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #e0f0f9;
+  transition: transform 0.3s;
+}
+
+.service-package:hover {
+  transform: scale(1.02); /* Slight zoom on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.service-package ul {
+  margin-left: 20px;
+  margin-top: 15px;
+  color: var(--text-grey);
+}
+
+/* ============================
+   6. CONTACT FORM
+   ============================ */
+.contact-form form {
+  background: var(--fresh-white);
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 0 auto; /* Centers the form */
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: var(--font-body);
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--leaf-green);
+  border-color: transparent;
+}
+
+/* ============================
+   7. FOOTER
+   ============================ */
+footer {
+  background-color: var(--text-dark);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+}
