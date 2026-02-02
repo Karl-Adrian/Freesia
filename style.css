@@ -24,7 +24,9 @@
   margin: 0;
   padding: 0;
 }
-
+.nav-logo {
+  width: 30%;
+}
 body {
   font-family: var(--font-body);
   background-color: var(--freesia-blue);
