@@ -38,17 +38,21 @@
     <main>
       <h1>Contact Us</h1>
       <p>Ready to book? Have a question? Reach out below.</p>
-
+      <br />
       <section class="contact-info">
         <h2>Get in Touch</h2>
         <p><strong>Email:</strong> hello@freesiacleaning.com</p>
-        <p><strong>Phone:</strong> (555) 123-4567</p>
-        <p><strong>Address:</strong> 123 Main Street, Cityville</p>
+        <p>
+          <strong>Phone(Managing Director):</strong> +254 700 755 667/+254 108
+          453 820
+        </p>
+        <p><strong>Phone(Operations Manager):</strong> +254 724 866 375</p>
+        <p><strong>Address:</strong> 402-00202 KNH,UPPER HILL NAIROBI</p>
       </section>
 
       <section class="contact-form">
         <h2>Send a Message</h2>
-        <form action="#" method="POST">
+        <form id="contactForm">
           <label for="name">Name:</label><br />
           <input type="text" id="name" name="name" required /><br /><br />
 
@@ -57,16 +61,16 @@
 
           <label for="service">Service Interested In:</label><br />
           <select id="service" name="service">
-            <option value="standard">Standard Clean</option>
-            <option value="deep">Deep Clean</option>
-            <option value="move">Move-In/Out</option></select
+            <option value="Standard Clean">Standard Clean</option>
+            <option value="Deep Clean">Deep Clean</option>
+            <option value="Move-In/Out">Move-In/Out</option></select
           ><br /><br />
 
           <label for="message">Message:</label><br />
           <textarea id="message" name="message" rows="5" required></textarea
           ><br /><br />
 
-          <button type="submit">Send Message</button>
+          <button type="submit">Send via WhatsApp</button>
         </form>
       </section>
     </main>
@@ -75,4 +79,31 @@
       <p>&copy; 2024 Freesia Cleaning Services. All rights reserved.</p>
     </footer>
   </body>
+
+  <script>
+    document
+      .getElementById("contactForm")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const service = document.getElementById("service").value;
+        const message = document.getElementById("message").value.trim();
+
+        // 👇 Replace with your WhatsApp number (country code + number, no + or spaces)
+        const phone = "254742897584";
+
+        const text =
+          `Hello! I just filled out your contact form.\n\n` +
+          `*Name:* ${name}\n` +
+          `*Email:* ${email}\n` +
+          `*Service:* ${service}\n` +
+          `*Message:* ${message}`;
+
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
+        window.open(url, "_blank");
+      });
+  </script>
 </html>
