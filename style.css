@@ -56,7 +56,7 @@ img {
    2. NAVIGATION BAR (Flexbox)
    ============================ */
 header {
-  background-color: var(--fresh-white);
+  background-color: #009ada;
   box-shadow: 0 2px 5px var(--shadow-color); /* Subtle shadow */
   padding: 1rem 0;
   position: sticky; /* Keeps nav at top when scrolling */
