@@ -3,55 +3,1653 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <title>Freesia Cleaning Services - Home</title>
+    <title>Freesia Cleaning Services Ltd</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --green-deep: #0a3a5c; /* deep navy-blue for dark backgrounds */
+        --green-mid: #009ada; /* freesia blue — primary brand color */
+        --green-fresh: #56ab21; /* freesia green — accent/CTA color */
+        --green-light: #a8d8a8; /* light green tint */
+        --cream: #fff4fd; /* rgb(255,244,253) — brand blush */
+        --warm-white: #fef9ff; /* very light blush-white */
+        --charcoal: #1a1a2e;
+        --text-muted: #4a5a6a;
+        --gold: #009ada;
+        --accent: #56ab21;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--warm-white);
+        color: var(--charcoal);
+        overflow-x: hidden;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.2rem 5%;
+        background: rgba(255, 244, 253, 0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 154, 218, 0.15);
+        transition: box-shadow 0.3s;
+      }
+      nav.scrolled {
+        box-shadow: 0 4px 30px rgba(10, 58, 92, 0.12);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        text-decoration: none;
+      }
+      .logo-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+      .logo-text {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--green-deep);
+        line-height: 1.2;
+      }
+      .logo-text span {
+        display: block;
+        font-size: 0.62rem;
+        font-weight: 400;
+        font-family: "DM Sans", sans-serif;
+        letter-spacing: 0.1em;
+        color: var(--text-muted);
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.2rem;
+        list-style: none;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--green-deep);
+        font-size: 0.88rem;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        position: relative;
+        padding-bottom: 3px;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 100%;
+        height: 1.5px;
+        background: var(--green-fresh);
+        transition: right 0.3s ease;
+      }
+      .nav-links a:hover::after {
+        right: 0;
+      }
+
+      .nav-cta {
+        background: var(--green-mid);
+        color: white !important;
+        padding: 0.55rem 1.3rem;
+        border-radius: 100px;
+        font-size: 0.85rem !important;
+        font-weight: 500 !important;
+        transition:
+          background 0.25s,
+          transform 0.2s !important;
+      }
+      .nav-cta::after {
+        display: none !important;
+      }
+      .nav-cta:hover {
+        background: var(--green-deep) !important;
+        transform: translateY(-1px);
+      }
+
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 4px;
+      }
+      .nav-toggle span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--green-deep);
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        min-height: 100vh;
+        background: var(--green-deep);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        padding: 8rem 5% 4rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 60% 80% at 70% 50%,
+            rgba(0, 154, 218, 0.15) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 40% 40% at 20% 80%,
+            rgba(86, 171, 33, 0.1) 0%,
+            transparent 60%
+          );
+      }
+
+      /* decorative circles */
+      .hero-circle {
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 154, 218, 0.2);
+      }
+      .hero-circle-1 {
+        width: 600px;
+        height: 600px;
+        right: -180px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .hero-circle-2 {
+        width: 400px;
+        height: 400px;
+        right: -60px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .hero-circle-3 {
+        width: 200px;
+        height: 200px;
+        right: 60px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(0, 154, 218, 0.15);
+        border: 1px solid rgba(0, 154, 218, 0.3);
+        color: var(--green-light);
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.4rem 1rem;
+        border-radius: 100px;
+        margin-bottom: 1.8rem;
+        opacity: 0;
+        animation: fadeUp 0.7s 0.2s forwards;
+      }
+      .hero-tag::before {
+        content: "✦";
+        font-size: 0.6rem;
+      }
+
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.8rem, 5vw, 4.5rem);
+        font-weight: 900;
+        line-height: 1.08;
+        color: white;
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: fadeUp 0.7s 0.35s forwards;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--green-fresh);
+        display: block;
+      }
+
+      .hero p {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 1.05rem;
+        line-height: 1.75;
+        max-width: 500px;
+        margin-bottom: 2.5rem;
+        font-weight: 300;
+        opacity: 0;
+        animation: fadeUp 0.7s 0.5s forwards;
+      }
+
+      .hero-btns {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        opacity: 0;
+        animation: fadeUp 0.7s 0.65s forwards;
+      }
+      .btn-primary {
+        background: var(--green-fresh);
+        color: var(--green-deep);
+        padding: 0.9rem 2rem;
+        border-radius: 100px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.92rem;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(86, 171, 33, 0.4);
+      }
+      .btn-secondary {
+        border: 1.5px solid rgba(255, 255, 255, 0.25);
+        color: white;
+        padding: 0.9rem 2rem;
+        border-radius: 100px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.92rem;
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+      }
+      .btn-secondary:hover {
+        border-color: var(--green-fresh);
+        background: rgba(86, 171, 33, 0.1);
+      }
+
+      .hero-visual {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        opacity: 0;
+        animation: fadeIn 1s 0.5s forwards;
+      }
+
+      .hero-card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        padding: 2.5rem;
+        backdrop-filter: blur(10px);
+        max-width: 340px;
+        width: 100%;
+      }
+      .hero-stat {
+        margin-bottom: 1.8rem;
+      }
+      .hero-stat:last-child {
+        margin-bottom: 0;
+      }
+      .stat-num {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        font-weight: 900;
+        color: var(--green-fresh);
+        line-height: 1;
+      }
+      .stat-label {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.85rem;
+        margin-top: 0.3rem;
+      }
+      .stat-divider {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.08);
+        margin: 1.8rem 0;
+      }
+
+      .hero-clients {
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+      }
+      .client-dots {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      .client-dot {
+        background: rgba(0, 154, 218, 0.2);
+        border: 1px solid rgba(0, 154, 218, 0.3);
+        color: var(--green-light);
+        font-size: 0.73rem;
+        padding: 0.3rem 0.7rem;
+        border-radius: 100px;
+      }
+
+      /* ── SECTIONS ── */
+      section {
+        padding: 6rem 5%;
+      }
+
+      .section-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--green-mid);
+        font-size: 0.78rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+      .section-tag::before {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 1.5px;
+        background: var(--green-fresh);
+      }
+
+      h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        font-weight: 800;
+        line-height: 1.15;
+        color: var(--green-deep);
+      }
+
+      /* ── ABOUT ── */
+      #about {
+        background: var(--cream);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+      .about-text h2 {
+        margin-bottom: 1.5rem;
+      }
+      .about-text p {
+        color: var(--text-muted);
+        line-height: 1.85;
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+        font-weight: 300;
+      }
+
+      .mission-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .mission-card {
+        background: white;
+        border-radius: 16px;
+        padding: 1.4rem;
+        border: 1px solid rgba(0, 154, 218, 0.15);
+        transition:
+          box-shadow 0.25s,
+          transform 0.25s;
+      }
+      .mission-card:hover {
+        box-shadow: 0 8px 30px rgba(10, 58, 92, 0.08);
+        transform: translateY(-3px);
+      }
+      .mission-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.7rem;
+      }
+      .mission-card h4 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--green-deep);
+        margin-bottom: 0.3rem;
+      }
+      .mission-card p {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      .about-visual {
+        position: relative;
+      }
+      .about-img-block {
+        background: var(--green-deep);
+        border-radius: 24px;
+        padding: 3rem 2.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .about-img-block::before {
+        content: "";
+        position: absolute;
+        top: -40%;
+        right: -20%;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: rgba(0, 154, 218, 0.12);
+      }
+      .about-quote {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+        font-style: italic;
+        color: white;
+        line-height: 1.5;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 1.5rem;
+      }
+      .about-quote::before {
+        content: '"';
+        font-size: 4rem;
+        color: var(--green-fresh);
+        opacity: 0.4;
+        display: block;
+        line-height: 0.5;
+        margin-bottom: 1rem;
+      }
+      .about-sub {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.82rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .about-badge {
+        position: absolute;
+        bottom: -1.5rem;
+        left: -1.5rem;
+        background: var(--green-fresh);
+        color: white;
+        border-radius: 16px;
+        padding: 1.2rem 1.5rem;
+        font-weight: 700;
+      }
+      .about-badge .num {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        display: block;
+      }
+      .about-badge .lbl {
+        font-size: 0.75rem;
+        font-weight: 500;
+      }
+
+      /* ── SERVICES ── */
+      #services {
+        background: var(--warm-white);
+      }
+      .services-header {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto 4rem;
+      }
+      .services-header .section-tag {
+        justify-content: center;
+      }
+      .services-header p {
+        color: var(--text-muted);
+        margin-top: 1rem;
+        line-height: 1.7;
+        font-weight: 300;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+      .service-card {
+        border: 1px solid rgba(10, 58, 92, 0.08);
+        border-radius: 20px;
+        padding: 2rem;
+        transition: all 0.3s;
+        cursor: default;
+        position: relative;
+        overflow: hidden;
+      }
+      .service-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 154, 218, 0.06) 0%,
+          transparent 60%
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .service-card:hover::before {
+        opacity: 1;
+      }
+      .service-card:hover {
+        border-color: rgba(0, 154, 218, 0.3);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(10, 58, 92, 0.08);
+      }
+
+      .service-emoji {
+        font-size: 2rem;
+        margin-bottom: 1.2rem;
+      }
+      .service-card h3 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--green-deep);
+        margin-bottom: 0.5rem;
+      }
+      .service-card p {
+        font-size: 0.87rem;
+        color: var(--text-muted);
+        line-height: 1.65;
+        font-weight: 300;
+      }
+
+      /* ── WHY US ── */
+      #why {
+        background: var(--green-deep);
+        position: relative;
+        overflow: hidden;
+      }
+      #why::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 70% 70% at 80% 50%,
+          rgba(0, 154, 218, 0.12) 0%,
+          transparent 70%
+        );
+      }
+      .why-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+      .why-text h2 {
+        color: white;
+        margin-bottom: 1.2rem;
+      }
+      .why-text p {
+        color: rgba(255, 255, 255, 0.55);
+        line-height: 1.8;
+        font-weight: 300;
+      }
+      .why-text .section-tag {
+        color: var(--green-light);
+      }
+      .why-text .section-tag::before {
+        background: var(--green-light);
+      }
+
+      .why-features {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+      .why-feat {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 1.5rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        transition:
+          background 0.25s,
+          border-color 0.25s;
+      }
+      .why-feat:hover {
+        background: rgba(0, 154, 218, 0.12);
+        border-color: rgba(0, 154, 218, 0.25);
+      }
+      .why-feat-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: rgba(0, 154, 218, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+      .why-feat-text h4 {
+        color: white;
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+      }
+      .why-feat-text p {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.83rem;
+        line-height: 1.6;
+        font-weight: 300;
+      }
+
+      /* ── CLIENTS ── */
+      #clients {
+        background: var(--cream);
+        text-align: center;
+      }
+      #clients h2 {
+        margin-bottom: 0.8rem;
+      }
+      #clients > p {
+        color: var(--text-muted);
+        margin-bottom: 3rem;
+        font-weight: 300;
+      }
+
+      .clients-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.2rem;
+      }
+      .client-pill {
+        background: white;
+        border: 1px solid rgba(10, 58, 92, 0.1);
+        border-radius: 100px;
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--green-deep);
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        transition: all 0.25s;
+      }
+      .client-pill::before {
+        content: "✓";
+        color: var(--green-fresh);
+        font-weight: 700;
+      }
+      .client-pill:hover {
+        background: var(--green-mid);
+        color: white;
+        border-color: var(--green-mid);
+      }
+      .client-pill:hover::before {
+        color: white;
+      }
+
+      /* ── PRICING ── */
+      #pricing {
+        background: var(--warm-white);
+      }
+      .pricing-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .pricing-text h2 {
+        margin-bottom: 1.2rem;
+      }
+      .pricing-text p {
+        color: var(--text-muted);
+        line-height: 1.8;
+        font-weight: 300;
+        margin-bottom: 1.5rem;
+      }
+
+      .steps {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .step {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: white;
+        border: 1px solid rgba(0, 154, 218, 0.15);
+        border-radius: 14px;
+        padding: 1.2rem 1.5rem;
+        transition: box-shadow 0.25s;
+      }
+      .step:hover {
+        box-shadow: 0 6px 24px rgba(10, 58, 92, 0.07);
+      }
+      .step-num {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: var(--green-mid);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .step p {
+        font-size: 0.9rem;
+        color: var(--charcoal);
+        font-weight: 400;
+      }
+
+      .pricing-card {
+        background: var(--green-deep);
+        border-radius: 24px;
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        color: white;
+      }
+      .pricing-card::before {
+        content: "";
+        position: absolute;
+        top: -30%;
+        right: -20%;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        background: rgba(0, 154, 218, 0.15);
+      }
+      .pricing-badge {
+        background: var(--green-fresh);
+        color: white;
+        display: inline-block;
+        padding: 0.3rem 1rem;
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+      .pricing-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 0.8rem;
+        position: relative;
+        z-index: 1;
+      }
+      .pricing-card p {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.9rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+        font-weight: 300;
+        position: relative;
+        z-index: 1;
+      }
+      .pricing-cta {
+        display: block;
+        text-align: center;
+        background: var(--green-fresh);
+        color: white;
+        padding: 1rem;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.95rem;
+        position: relative;
+        z-index: 1;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+      }
+      .pricing-cta:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+
+      /* ── CONTACT ── */
+      #contact {
+        background: var(--cream);
+      }
+      .contact-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+      .contact-text h2 {
+        margin-bottom: 1.2rem;
+      }
+      .contact-text p {
+        color: var(--text-muted);
+        line-height: 1.8;
+        font-weight: 300;
+        margin-bottom: 2rem;
+      }
+
+      .contact-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .contact-card {
+        background: white;
+        border-radius: 16px;
+        padding: 1.4rem 1.6rem;
+        border: 1px solid rgba(10, 58, 92, 0.08);
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        transition: box-shadow 0.25s;
+      }
+      .contact-card:hover {
+        box-shadow: 0 6px 24px rgba(10, 58, 92, 0.07);
+      }
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: rgba(0, 154, 218, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+      .contact-info h4 {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        font-weight: 400;
+        margin-bottom: 0.2rem;
+      }
+      .contact-info p {
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--green-deep);
+      }
+      .contact-info a {
+        color: var(--green-deep);
+        text-decoration: none;
+      }
+      .contact-info a:hover {
+        color: var(--green-mid);
+      }
+
+      .contact-form {
+        background: white;
+        border-radius: 24px;
+        padding: 2.5rem;
+        border: 1px solid rgba(10, 58, 92, 0.08);
+      }
+      .contact-form h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+        color: var(--green-deep);
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .form-group {
+        margin-bottom: 1.2rem;
+      }
+      .form-group label {
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        margin-bottom: 0.4rem;
+        letter-spacing: 0.03em;
+      }
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        border: 1.5px solid rgba(10, 58, 92, 0.12);
+        border-radius: 10px;
+        padding: 0.75rem 1rem;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.9rem;
+        color: var(--charcoal);
+        background: var(--warm-white);
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+        outline: none;
+      }
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        border-color: var(--green-mid);
+        box-shadow: 0 0 0 3px rgba(0, 154, 218, 0.12);
+      }
+      .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+      .form-submit {
+        width: 100%;
+        background: var(--green-mid);
+        color: white;
+        border: none;
+        padding: 1rem;
+        border-radius: 12px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .form-submit:hover {
+        background: var(--green-deep);
+        transform: translateY(-1px);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--green-deep);
+        color: rgba(255, 255, 255, 0.5);
+        padding: 3rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      footer .logo-text {
+        color: white;
+      }
+      footer p {
+        font-size: 0.82rem;
+      }
+      .footer-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.4);
+        text-decoration: none;
+        font-size: 0.82rem;
+        transition: color 0.2s;
+      }
+      .footer-links a:hover {
+        color: var(--green-fresh);
+      }
+
+      /* ── ANIMATIONS ── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ── MOBILE MENU ── */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          gap: 0;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: var(--warm-white);
+          border-bottom: 1px solid rgba(0, 154, 218, 0.15);
+          padding: 1rem 5%;
+          box-shadow: 0 8px 30px rgba(10, 58, 92, 0.1);
+        }
+        .nav-links.open {
+          display: flex;
+        }
+        .nav-links li {
+          border-bottom: 1px solid rgba(10, 58, 92, 0.06);
+        }
+        .nav-links a {
+          display: block;
+          padding: 0.9rem 0;
+        }
+        .nav-links a::after {
+          display: none;
+        }
+        .nav-cta {
+          display: inline-block;
+          margin: 0.5rem 0 0.8rem;
+        }
+        .nav-toggle {
+          display: flex;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          padding-top: 6rem;
+          padding-bottom: 3rem;
+        }
+        .hero-visual {
+          justify-content: center;
+        }
+        .hero-circle-1,
+        .hero-circle-2,
+        .hero-circle-3 {
+          display: none;
+        }
+
+        #about {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .about-badge {
+          position: static;
+          margin-top: 1rem;
+          display: inline-block;
+        }
+        .mission-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .why-inner {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+
+        .pricing-inner {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+
+        .contact-inner {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        footer {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        section {
+          padding: 4rem 5%;
+        }
+        .hero h1 {
+          font-size: 2.4rem;
+        }
+        .hero-card {
+          padding: 1.8rem;
+        }
+        .stat-num {
+          font-size: 2.2rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="index.html"
-          ><img class="nav-logo" src="/photos/Freesia Logo.svg"
-        /></a>
-        <!-- <div class="logo">Freesia Cleaning Services</div> -->
-
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-
-        <!-- Dark Mode Toggle -->
-        <div class="theme-toggle">
-          <input
-            type="checkbox"
-            id="dark-mode-toggle"
-            class="toggle-checkbox"
-          />
-          <label for="dark-mode-toggle" class="toggle-label">
-            <span class="toggle-icon"></span>
-          </label>
+    <!-- NAV -->
+    <nav id="navbar">
+      <a href="#" class="logo">
+        <img class="logo-icon" src="/photos/Freesia Logo.svg" />
+        <div class="logo-text">
+          Freesia
+          <span>Cleaning Services Ltd</span>
         </div>
-      </nav>
-    </header>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#clients">Clients</a></li>
+        <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
 
-    <main>
-      <section class="hero">
-        <h1>Spotless Cleaning for Your Peace of Mind</h1>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-circle hero-circle-1"></div>
+      <div class="hero-circle hero-circle-2"></div>
+      <div class="hero-circle hero-circle-3"></div>
 
+      <div class="hero-content">
+        <div class="hero-tag">Est. 2019 · Nairobi, Kenya</div>
+        <h1>
+          Cleaning Beyond
+          <em>Expectation</em>
+        </h1>
         <p>
-          Professional, reliable, and eco-friendly cleaning solutions for homes
-          and offices.
+          Your comfort is our goal. We deliver reliable, high-quality cleaning
+          and sanitation solutions for offices, residences, and industrial
+          spaces across Kenya.
         </p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-primary">Request a Quote →</a>
+          <a href="#services" class="btn-secondary">Our Services</a>
+        </div>
+      </div>
 
-        <a href="contact.html" class="btn-book">Book Now</a>
-      </section>
-    </main>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-stat">
+            <div class="stat-num">6+</div>
+            <div class="stat-label">Years of trusted service</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="hero-stat">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Commitment to customer satisfaction</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="hero-clients">Notable Clients</div>
+          <div class="client-dots">
+            <span class="client-dot">Lake Naivasha Resort</span>
+            <span class="client-dot">Leogion Security</span>
+            <span class="client-dot">Elapko Ltd</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="about-text reveal">
+        <div class="section-tag">About Us</div>
+        <h2>Kenyan-Owned. Professionally Driven.</h2>
+        <p>
+          Founded in 2019, Freesia Cleaning Services Ltd is a registered Kenyan
+          company with a proven track record in commercial, residential, and
+          industrial cleaning. Our main office is in Nairobi, with satellite
+          offices across the country for real-time service delivery.
+        </p>
+        <p>
+          We understand that hygiene is not optional — it is essential. Our
+          dedicated teams are equipped with modern tools and eco-friendly
+          products to uphold the highest standards every time.
+        </p>
+        <div class="mission-grid">
+          <div class="mission-card">
+            <div class="mission-icon">🎯</div>
+            <h4>Customer First</h4>
+            <p>Complete satisfaction at every touchpoint, every time.</p>
+          </div>
+          <div class="mission-card">
+            <div class="mission-icon">🌿</div>
+            <h4>Eco-Friendly</h4>
+            <p>Safe products that protect people and the planet.</p>
+          </div>
+          <div class="mission-card">
+            <div class="mission-icon">⚡</div>
+            <h4>Rapid Response</h4>
+            <p>We adapt immediately to the changing needs of clients.</p>
+          </div>
+          <div class="mission-card">
+            <div class="mission-icon">📈</div>
+            <h4>Continuous Growth</h4>
+            <p>Always improving services, standards, and our team.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-visual reveal">
+        <div class="about-img-block">
+          <div class="about-quote">Your Comfort is our Goal</div>
+          <p class="about-sub">
+            Every person on our team is a player with the expectation to perform
+            at their fullest potential, ensuring your environment is a place to
+            be proud of.
+          </p>
+        </div>
+        <div class="about-badge">
+          <span class="num">4+</span>
+          <span class="lbl">Provinces Covered</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="services-header reveal">
+        <div class="section-tag">What We Do</div>
+        <h2>Comprehensive Cleaning Solutions</h2>
+        <p>
+          From routine office maintenance to specialized deep cleaning, we have
+          the expertise and equipment to handle any scope, any scale.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-emoji">🏢</div>
+          <h3>Office & Commercial Cleaning</h3>
+          <p>
+            Consistent, professional cleaning for offices and commercial spaces
+            to keep your team productive and your premises presentable.
+          </p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-emoji">🏗️</div>
+          <h3>Post-Construction Cleaning</h3>
+          <p>
+            Thorough handover cleaning after construction or renovation to
+            ensure your space is move-in ready.
+          </p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-emoji">🛋️</div>
+          <h3>Carpet & Upholstery</h3>
+          <p>
+            Expert cleaning for carpets, sofas, and upholstery using specialized
+            methods that restore and protect.
+          </p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-emoji">🗑️</div>
+          <h3>Sanitary Bin Services</h3>
+          <p>
+            Reliable supply and regular servicing of sanitary bins for hygienic,
+            compliant washroom environments.
+          </p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-emoji">🧹</div>
+          <h3>Deep Cleaning & Fumigation</h3>
+          <p>
+            Intensive cleaning and fumigation services that eliminate hidden
+            contaminants and pests for a truly sanitized environment.
+          </p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-emoji">🪟</div>
+          <h3>Compound & Window Cleaning</h3>
+          <p>
+            Inside and out — sparkling windows and well-maintained grounds that
+            create a strong first impression.
+          </p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-emoji">🎉</div>
+          <h3>Event & Emergency Cleanup</h3>
+          <p>
+            Fast, reliable cleanup for events of all sizes, and emergency
+            response cleaning when you need it most.
+          </p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-emoji">🧪</div>
+          <h3>Disinfection Programs</h3>
+          <p>
+            High-touch surface disinfection programs tailored for
+            health-conscious and high-traffic environments.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY US -->
+    <section id="why">
+      <div class="why-inner">
+        <div class="why-text reveal">
+          <div class="section-tag">Why Choose Us</div>
+          <h2>Built on Trust, Delivered with Excellence</h2>
+          <p style="margin-top: 1rem">
+            Our reputation has been built on long-term relationships, consistent
+            quality, and a team that genuinely cares. Here is what sets Freesia
+            apart.
+          </p>
+        </div>
+        <div class="why-features reveal">
+          <div class="why-feat">
+            <div class="why-feat-icon">👷</div>
+            <div class="why-feat-text">
+              <h4>Trained Professionals</h4>
+              <p>
+                Experienced staff trained in modern, safe, and effective
+                cleaning methods.
+              </p>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon">🔧</div>
+            <div class="why-feat-text">
+              <h4>Modern Equipment</h4>
+              <p>
+                We invest in up-to-date tools and eco-friendly products for
+                superior results.
+              </p>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon">📅</div>
+            <div class="why-feat-text">
+              <h4>Flexible Scheduling</h4>
+              <p>
+                Contracts or one-off call-ins — we work around your timeline.
+              </p>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon">💬</div>
+            <div class="why-feat-text">
+              <h4>Transparent & Responsive</h4>
+              <p>
+                Clear pricing, honest communication, and a team that picks up
+                the phone.
+              </p>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon">🔒</div>
+            <div class="why-feat-text">
+              <h4>Integrity & Confidentiality</h4>
+              <p>
+                Your premises and information are handled with the utmost
+                discretion.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENTS -->
+    <section id="clients">
+      <div class="section-tag reveal" style="justify-content: center">
+        Our Clients
+      </div>
+      <h2 class="reveal">Trusted by Leading Organizations</h2>
+      <p
+        class="reveal"
+        style="
+          color: var(--text-muted);
+          margin-top: 0.8rem;
+          margin-bottom: 2.5rem;
+          font-weight: 300;
+        "
+      >
+        We are proud to have served and maintained long-term relationships with
+        these valued clients.
+      </p>
+      <div class="clients-row reveal">
+        <div class="client-pill">Leogion Security</div>
+        <div class="client-pill">Elapko Limited</div>
+        <div class="client-pill">Lake Naivasha Resort</div>
+        <div class="client-pill">Crescent Resort</div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <div class="pricing-inner">
+        <div class="pricing-text reveal">
+          <div class="section-tag">Pricing</div>
+          <h2>Fair, Customized Quotations</h2>
+          <p>
+            We believe in transparent, value-driven pricing. Every property is
+            different, so we conduct a physical assessment to build a scope of
+            work and quotation that truly fits your needs and budget.
+          </p>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <p>On-site assessment at a mutually convenient time</p>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <p>Detailed scope of work and frequency plan</p>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <p>Customized quote with itemized pricing and terms</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-card reveal">
+          <div class="pricing-badge">Get Started</div>
+          <h3>Request a Free Assessment</h3>
+          <p>
+            Contact us today and we will schedule a no-obligation site visit.
+            Our rates are competitive and designed to deliver genuine value for
+            every investment.
+          </p>
+          <a href="#contact" class="pricing-cta">Book an Assessment →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="contact-inner">
+        <div class="contact-text reveal">
+          <div class="section-tag">Get in Touch</div>
+          <h2>Let's Keep Your Space Spotless</h2>
+          <p>
+            Ready to experience the Freesia difference? Reach out to our team
+            directly or fill in the form and we will get back to you promptly.
+          </p>
+
+          <div class="contact-cards">
+            <div class="contact-card">
+              <div class="contact-icon">👩‍💼</div>
+              <div class="contact-info">
+                <h4>Managing Director</h4>
+                <p>Nina Adhiambo</p>
+                <p>
+                  <a href="tel:+254700755667">+254 700 755 667</a> /
+                  <a href="tel:+254108453820">+254 108 453 820</a>
+                </p>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon">👨‍💼</div>
+              <div class="contact-info">
+                <h4>Operations Manager</h4>
+                <p>Leonard Chepkongo</p>
+                <p><a href="tel:+254724866375">+254 724 866 375</a></p>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon">📍</div>
+              <div class="contact-info">
+                <h4>Main Office</h4>
+                <p>Nairobi, Kenya</p>
+                <p>Satellite offices nationwide</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form reveal">
+          <h3>Send Us a Message</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="John" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Doe" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="john@company.com" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+254 7XX XXX XXX" />
+          </div>
+          <div class="form-group">
+            <label>Service Needed</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Office & Commercial Cleaning</option>
+              <option>Post-Construction Cleaning</option>
+              <option>Carpet & Upholstery</option>
+              <option>Deep Cleaning & Fumigation</option>
+              <option>Sanitary Bin Services</option>
+              <option>Event & Emergency Cleanup</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea
+              placeholder="Tell us about your property and cleaning requirements..."
+            ></textarea>
+          </div>
+          <button class="form-submit" onclick="handleSubmit(event)">
+            Send Message
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-      <p>&copy; 2026 Freesia Cleaning Services. All rights reserved.</p>
-      <p>Follow us on social media: [Links go here]</p>
+      <a href="#" class="logo">
+        <div class="logo-icon">🌸</div>
+        <div class="logo-text" style="color: white">
+          Freesia
+          <span style="color: rgba(255, 255, 255, 0.4)"
+            >Cleaning Services Ltd</span
+          >
+        </div>
+      </a>
+      <p style="font-size: 0.8rem">
+        © 2025 Freesia Cleaning Services Ltd. All rights reserved.
+      </p>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
     </footer>
+
+    <script>
+      // Nav scroll shadow
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 20);
+      });
+
+      // Mobile menu toggle
+      const toggle = document.getElementById("navToggle");
+      const links = document.getElementById("navLinks");
+      toggle.addEventListener("click", () => {
+        links.classList.toggle("open");
+      });
+      links.querySelectorAll("a").forEach((a) => {
+        a.addEventListener("click", () => links.classList.remove("open"));
+      });
+
+      // Scroll reveal
+      const reveals = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => entry.target.classList.add("visible"), i * 80);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -60px 0px" },
+      );
+
+      reveals.forEach((el) => observer.observe(el));
+
+      // Form submit
+      function handleSubmit(e) {
+        e.preventDefault();
+        const btn = e.target;
+        btn.textContent = "✓ Message Sent!";
+        btn.style.background = "var(--green-fresh)";
+        btn.style.color = "var(--green-deep)";
+        setTimeout(() => {
+          btn.textContent = "Send Message";
+          btn.style.background = "";
+          btn.style.color = "";
+        }, 3000);
+      }
+    </script>
   </body>
 </html>
