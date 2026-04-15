@@ -1652,7 +1652,7 @@
         </div>
         <div class="gallery-item gi-2" onclick="openLightbox(this)">
           <img
-            src="photos/man with equipment.jpeg"
+            src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=600&q=80"
             alt="Kitchen and commercial cleaning"
             loading="lazy"
           />
@@ -1692,7 +1692,7 @@
         </div>
         <div class="gallery-item gi-6" onclick="openLightbox(this)">
           <img
-            src="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=600&q=80"
+            src="photos/man with equipment.jpeg"
             alt="Industrial cleaning"
             loading="lazy"
           />
@@ -1707,12 +1707,12 @@
             loading="lazy"
           />
           <div class="gallery-item-overlay">
-            <span class="gallery-item-label">Our Team</span>
+            <span class="gallery-item-label">Our Work</span>
           </div>
         </div>
         <div class="gallery-item gi-8" onclick="openLightbox(this)">
           <img
-            src="photos/lady wiping chair.jpeg"
+            src="photos/mop and bucket.jpeg"
             alt="Post-construction cleaning"
             loading="lazy"
           />
@@ -1730,7 +1730,7 @@
         <div class="gallery-strip" id="galleryStrip">
           <div class="gallery-strip-item" onclick="openLightbox(this)">
             <img
-              src="photos/mop and bucket.jpeg"
+              src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80"
               alt="Event cleanup"
               loading="lazy"
             />
@@ -1758,21 +1758,21 @@
           </div>
           <div class="gallery-strip-item" onclick="openLightbox(this)">
             <img
-              src="photos/cleaning equipment.jpeg"
+              src="photos/lady wiping chair.jpeg"
               alt="Disinfection service"
               loading="lazy"
             />
           </div>
           <div class="gallery-strip-item" onclick="openLightbox(this)">
             <img
-              src="https://images.unsplash.com/photo-1486946255434-2466348c2166?w=500&q=80"
+              src="photos/cleaning supplies.jpeg"
               alt="Hotel room cleaning"
               loading="lazy"
             />
           </div>
           <div class="gallery-strip-item" onclick="openLightbox(this)">
             <img
-              src="photos/cleaning supplies.jpeg"
+              src="photos/mop and bucket.jpeg"
               alt="Compound cleaning outdoors"
               loading="lazy"
             />
@@ -1879,9 +1879,9 @@
         <div class="client-pill">Leogion Security</div>
         <div class="client-pill">Elapko Limited</div>
         <div class="client-pill">Lake Naivasha Resort</div>
+        <div class="client-pill">Crescent Resort</div>
         <div class="client-pill">Tawi Fresh</div>
         <div class="client-pill">Joy Jewel Academy</div>
-        <div class="client-pill">Crescent Resort</div>
       </div>
     </section>
 
@@ -1969,46 +1969,107 @@
 
         <div class="contact-form reveal">
           <h3>Send Us a Message</h3>
-          <div class="form-row">
-            <div class="form-group">
-              <label>First Name</label>
-              <input type="text" placeholder="John" />
+
+          <form
+            id="contactForm"
+            action="https://formsubmit.co/spidermanady36@gmail.com"
+            method="POST"
+          >
+            <!-- FormSubmit config -->
+            <input
+              type="hidden"
+              name="_subject"
+              value="New Enquiry — Freesia Cleaning Services"
+            />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input
+                  type="text"
+                  name="first_name"
+                  placeholder="John"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input
+                  type="text"
+                  name="last_name"
+                  placeholder="Doe"
+                  required
+                />
+              </div>
             </div>
             <div class="form-group">
-              <label>Last Name</label>
-              <input type="text" placeholder="Doe" />
+              <label>Email Address</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="john@company.com"
+                required
+              />
             </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" name="phone" placeholder="+254 7XX XXX XXX" />
+            </div>
+            <div class="form-group">
+              <label>Service Needed</label>
+              <select name="service">
+                <option value="">Select a service...</option>
+                <option>Office & Commercial Cleaning</option>
+                <option>Post-Construction Cleaning</option>
+                <option>Carpet & Upholstery</option>
+                <option>Deep Cleaning & Fumigation</option>
+                <option>Sanitary Bin Services</option>
+                <option>Event & Emergency Cleanup</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea
+                name="message"
+                placeholder="Tell us about your property and cleaning requirements..."
+              ></textarea>
+            </div>
+            <button type="submit" class="form-submit" id="submitBtn">
+              Send Message
+            </button>
+          </form>
+
+          <!-- Success message shown after submission -->
+          <div
+            id="formSuccess"
+            style="display: none; text-align: center; padding: 2.5rem 0"
+          >
+            <div style="font-size: 3rem; margin-bottom: 1rem">✅</div>
+            <h4
+              style="
+                color: var(--green-deep);
+                font-size: 1.15rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+              "
+            >
+              Message Sent!
+            </h4>
+            <p
+              style="
+                color: var(--text-muted);
+                font-size: 0.9rem;
+                font-weight: 300;
+                line-height: 1.7;
+              "
+            >
+              Thank you for reaching out. A member of the Freesia team will get
+              back to you shortly.
+            </p>
           </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" placeholder="john@company.com" />
-          </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" placeholder="+254 7XX XXX XXX" />
-          </div>
-          <div class="form-group">
-            <label>Service Needed</label>
-            <select>
-              <option value="">Select a service...</option>
-              <option>Office & Commercial Cleaning</option>
-              <option>Post-Construction Cleaning</option>
-              <option>Carpet & Upholstery</option>
-              <option>Deep Cleaning & Fumigation</option>
-              <option>Sanitary Bin Services</option>
-              <option>Event & Emergency Cleanup</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea
-              placeholder="Tell us about your property and cleaning requirements..."
-            ></textarea>
-          </div>
-          <button class="form-submit" onclick="handleSubmit(event)">
-            Send Message
-          </button>
         </div>
       </div>
     </section>
@@ -2025,7 +2086,7 @@
         </div>
       </a>
       <p style="font-size: 0.8rem">
-        © 2025 Freesia Cleaning Services Ltd. All rights reserved.
+        © 2026 Freesia Cleaning Services Ltd. All rights reserved.
       </p>
       <div class="footer-links">
         <a href="#about">About</a>
@@ -2067,18 +2128,47 @@
 
       reveals.forEach((el) => observer.observe(el));
 
-      // Form submit
-      function handleSubmit(e) {
-        e.preventDefault();
-        const btn = e.target;
-        btn.textContent = "✓ Message Sent!";
-        btn.style.background = "var(--green-fresh)";
-        btn.style.color = "white";
-        setTimeout(() => {
-          btn.textContent = "Send Message";
-          btn.style.background = "";
-          btn.style.color = "";
-        }, 3000);
+      // Form submit — uses FormSubmit via fetch (no page redirect)
+      const contactForm = document.getElementById("contactForm");
+      const submitBtn = document.getElementById("submitBtn");
+      const formSuccess = document.getElementById("formSuccess");
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          // Button loading state
+          submitBtn.textContent = "Sending…";
+          submitBtn.disabled = true;
+          submitBtn.style.opacity = "0.75";
+
+          const formData = new FormData(contactForm);
+
+          try {
+            const response = await fetch(contactForm.action, {
+              method: "POST",
+              body: formData,
+              headers: { Accept: "application/json" },
+            });
+
+            if (response.ok) {
+              // Hide form, show success
+              contactForm.style.display = "none";
+              formSuccess.style.display = "block";
+            } else {
+              throw new Error("Server error");
+            }
+          } catch (err) {
+            // Fallback: restore button and show error
+            submitBtn.textContent = "Send Message";
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "";
+            submitBtn.textContent = "⚠ Failed — please try again";
+            setTimeout(() => {
+              submitBtn.textContent = "Send Message";
+            }, 3000);
+          }
+        });
       }
 
       // Lightbox
