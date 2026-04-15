@@ -70,6 +70,7 @@
       .logo-icon {
         width: 38px;
         height: 38px;
+        background: var(--green-mid);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1145,18 +1146,281 @@
         }
       }
 
-      @media (max-width: 480px) {
-        section {
-          padding: 4rem 5%;
+      /* ── GALLERY ── */
+      #gallery {
+        background: var(--green-deep);
+        padding: 6rem 5%;
+        overflow: hidden;
+      }
+      .gallery-header {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto 3.5rem;
+      }
+      .gallery-header .section-tag {
+        justify-content: center;
+        color: var(--green-light);
+      }
+      .gallery-header .section-tag::before {
+        background: var(--green-light);
+      }
+      .gallery-header h2 {
+        color: white;
+      }
+      .gallery-header p {
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 1rem;
+        font-weight: 300;
+        line-height: 1.7;
+      }
+
+      /* Masonry grid */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(3, 200px);
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        cursor: pointer;
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        display: block;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.07);
+      }
+      .gallery-item-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          transparent 40%,
+          rgba(10, 58, 92, 0.85) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.35s;
+        display: flex;
+        align-items: flex-end;
+        padding: 1.2rem;
+      }
+      .gallery-item:hover .gallery-item-overlay {
+        opacity: 1;
+      }
+      .gallery-item-label {
+        color: white;
+        font-size: 0.82rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .gallery-item-label::before {
+        content: "📸";
+        font-size: 0.75rem;
+      }
+
+      /* Grid placement */
+      .gi-1 {
+        grid-column: 1 / 6;
+        grid-row: 1 / 3;
+      }
+      .gi-2 {
+        grid-column: 6 / 9;
+        grid-row: 1 / 2;
+      }
+      .gi-3 {
+        grid-column: 9 / 13;
+        grid-row: 1 / 2;
+      }
+      .gi-4 {
+        grid-column: 6 / 10;
+        grid-row: 2 / 4;
+      }
+      .gi-5 {
+        grid-column: 10/ 13;
+        grid-row: 2 / 3;
+      }
+      .gi-6 {
+        grid-column: 1 / 4;
+        grid-row: 3 / 4;
+      }
+      .gi-7 {
+        grid-column: 4 / 6;
+        grid-row: 3 / 4;
+      }
+      .gi-8 {
+        grid-column: 10/ 13;
+        grid-row: 3 / 4;
+      }
+
+      /* Carousel strip */
+      .gallery-strip-wrap {
+        position: relative;
+      }
+      .gallery-strip {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-bottom: 4px;
+      }
+      .gallery-strip::-webkit-scrollbar {
+        display: none;
+      }
+      .gallery-strip-item {
+        flex: 0 0 260px;
+        height: 160px;
+        border-radius: 14px;
+        overflow: hidden;
+        scroll-snap-align: start;
+        position: relative;
+        cursor: pointer;
+      }
+      .gallery-strip-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+      .gallery-strip-item:hover img {
+        transform: scale(1.08);
+      }
+
+      .strip-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+        z-index: 5;
+      }
+      .strip-btn:hover {
+        background: var(--green-mid);
+        border-color: var(--green-mid);
+      }
+      .strip-btn-prev {
+        left: -16px;
+      }
+      .strip-btn-next {
+        right: -16px;
+      }
+
+      /* Lightbox */
+      .lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        background: rgba(10, 20, 40, 0.95);
+        backdrop-filter: blur(6px);
+        align-items: center;
+        justify-content: center;
+      }
+      .lightbox.open {
+        display: flex;
+      }
+      .lightbox-img {
+        max-width: 88vw;
+        max-height: 85vh;
+        border-radius: 16px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        object-fit: contain;
+      }
+      .lightbox-close {
+        position: fixed;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: 1.1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+      }
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .lightbox-caption {
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.85rem;
+        text-align: center;
+      }
+
+      @media (max-width: 900px) {
+        .gallery-grid {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
         }
-        .hero h1 {
-          font-size: 2.4rem;
+        .gi-1,
+        .gi-2,
+        .gi-3,
+        .gi-4,
+        .gi-5,
+        .gi-6,
+        .gi-7,
+        .gi-8 {
+          grid-column: auto;
+          grid-row: auto;
+          height: 180px;
         }
-        .hero-card {
-          padding: 1.8rem;
+        .gi-1 {
+          grid-column: 1 / 3;
+          height: 220px;
         }
-        .stat-num {
-          font-size: 2.2rem;
+      }
+
+      @media (max-width: 560px) {
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+        .gi-1,
+        .gi-2,
+        .gi-3,
+        .gi-4,
+        .gi-5,
+        .gi-6,
+        .gi-7,
+        .gi-8 {
+          grid-column: 1;
+          height: 180px;
+        }
+        .gi-1 {
+          height: 220px;
+        }
+        .strip-btn {
+          display: none;
         }
       }
     </style>
@@ -1165,7 +1429,7 @@
     <!-- NAV -->
     <nav id="navbar">
       <a href="#" class="logo">
-        <img class="logo-icon" src="/photos/Freesia Logo.svg" />
+        <div class="logo-icon">🌸</div>
         <div class="logo-text">
           Freesia
           <span>Cleaning Services Ltd</span>
@@ -1174,6 +1438,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#why">Why Us</a></li>
         <li><a href="#clients">Clients</a></li>
         <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
@@ -1363,6 +1628,170 @@
       </div>
     </section>
 
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="gallery-header reveal">
+        <div class="section-tag">Our Work in Action</div>
+        <h2>Cleanliness You Can See</h2>
+        <p>
+          From corporate offices to resort facilities, here is a glimpse of the
+          standard we bring to every space we touch.
+        </p>
+      </div>
+
+      <!-- Masonry Grid -->
+      <div class="gallery-grid reveal">
+        <div class="gallery-item gi-1" onclick="openLightbox(this)">
+          <img
+            src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
+            alt="Professional office cleaning"
+            loading="lazy"
+          />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">Office Deep Clean</span>
+          </div>
+        </div>
+        <div class="gallery-item gi-2" onclick="openLightbox(this)">
+          <img
+            src="photos/man with equipment.jpeg"
+            alt="Kitchen and commercial cleaning"
+            loading="lazy"
+          />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">Commercial Kitchen</span>
+          </div>
+        </div>
+        <div class="gallery-item gi-3" onclick="openLightbox(this)">
+          <img
+            src="photos/two men cleaning.jpeg"
+            alt="Window cleaning"
+            loading="lazy"
+          />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">Window Cleaning</span>
+          </div>
+        </div>
+        <div class="gallery-item gi-4" onclick="openLightbox(this)">
+          <img
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80"
+            alt="Carpet cleaning"
+            loading="lazy"
+          />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">Carpet & Upholstery</span>
+          </div>
+        </div>
+        <div class="gallery-item gi-5" onclick="openLightbox(this)">
+          <img
+            src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?w=600&q=80"
+            alt="Bathroom sanitation"
+            loading="lazy"
+          />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">Washroom Sanitizing</span>
+          </div>
+        </div>
+        <div class="gallery-item gi-6" onclick="openLightbox(this)">
+          <img
+            src="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=600&q=80"
+            alt="Industrial cleaning"
+            loading="lazy"
+          />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">Industrial Spaces</span>
+          </div>
+        </div>
+        <div class="gallery-item gi-7" onclick="openLightbox(this)">
+          <img
+            src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=500&q=80"
+            alt="Cleaning team at work"
+            loading="lazy"
+          />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">Our Team</span>
+          </div>
+        </div>
+        <div class="gallery-item gi-8" onclick="openLightbox(this)">
+          <img
+            src="https://images.unsplash.com/photo-1571689936114-b26fe8f0b2db?w=600&q=80"
+            alt="Post-construction cleaning"
+            loading="lazy"
+          />
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-label">Post-Construction</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scrollable Strip -->
+      <div class="gallery-strip-wrap reveal" style="margin-top: 0">
+        <button class="strip-btn strip-btn-prev" onclick="scrollStrip(-1)">
+          &#8592;
+        </button>
+        <div class="gallery-strip" id="galleryStrip">
+          <div class="gallery-strip-item" onclick="openLightbox(this)">
+            <img
+              src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80"
+              alt="Event cleanup"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-strip-item" onclick="openLightbox(this)">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&q=80"
+              alt="Residential cleaning"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-strip-item" onclick="openLightbox(this)">
+            <img
+              src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=500&q=80"
+              alt="Sparkling clean home"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-strip-item" onclick="openLightbox(this)">
+            <img
+              src="https://images.unsplash.com/photo-1521783593447-5702b9bfd267?w=500&q=80"
+              alt="Floor polishing"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-strip-item" onclick="openLightbox(this)">
+            <img
+              src="https://images.unsplash.com/photo-1596910547897-97b3cfef5ec4?w=500&q=80"
+              alt="Disinfection service"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-strip-item" onclick="openLightbox(this)">
+            <img
+              src="https://images.unsplash.com/photo-1486946255434-2466348c2166?w=500&q=80"
+              alt="Hotel room cleaning"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-strip-item" onclick="openLightbox(this)">
+            <img
+              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=500&q=80"
+              alt="Compound cleaning outdoors"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <button class="strip-btn strip-btn-next" onclick="scrollStrip(1)">
+          &#8594;
+        </button>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
     <!-- WHY US -->
     <section id="why">
       <div class="why-inner">
@@ -1451,6 +1880,8 @@
         <div class="client-pill">Leogion Security</div>
         <div class="client-pill">Elapko Limited</div>
         <div class="client-pill">Lake Naivasha Resort</div>
+        <div class="client-pill">Tawi Fresh</div>
+        <div class="client-pill">Joy Jewel Academy</div>
         <div class="client-pill">Crescent Resort</div>
       </div>
     </section>
@@ -1522,8 +1953,8 @@
               <div class="contact-icon">👨‍💼</div>
               <div class="contact-info">
                 <h4>Operations Manager</h4>
-                <p>Leonard Chepkongo</p>
-                <p><a href="tel:+254724866375">+254 724 866 375</a></p>
+                <p>Fredrick Kimondiu</p>
+                <p><a href="tel:+254724866375">+254 114 765 916</a></p>
               </div>
             </div>
             <div class="contact-card">
@@ -1643,12 +2074,48 @@
         const btn = e.target;
         btn.textContent = "✓ Message Sent!";
         btn.style.background = "var(--green-fresh)";
-        btn.style.color = "var(--green-deep)";
+        btn.style.color = "white";
         setTimeout(() => {
           btn.textContent = "Send Message";
           btn.style.background = "";
           btn.style.color = "";
         }, 3000);
+      }
+
+      // Lightbox
+      function openLightbox(el) {
+        const img = el.querySelector("img");
+        const label = el.querySelector(
+          ".gallery-item-label, .gallery-strip-item img",
+        );
+        document.getElementById("lightboxImg").src = img.src.replace(
+          /w=\d+/,
+          "w=1400",
+        );
+        document.getElementById("lightboxImg").alt = img.alt;
+        document.getElementById("lightboxCaption").textContent = img.alt;
+        document.getElementById("lightbox").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeLightbox(e) {
+        if (
+          !e ||
+          e.target === document.getElementById("lightbox") ||
+          e.target.classList.contains("lightbox-close")
+        ) {
+          document.getElementById("lightbox").classList.remove("open");
+          document.body.style.overflow = "";
+        }
+      }
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape")
+          closeLightbox({ target: document.getElementById("lightbox") });
+      });
+
+      // Strip scroll
+      function scrollStrip(dir) {
+        const strip = document.getElementById("galleryStrip");
+        strip.scrollBy({ left: dir * 560, behavior: "smooth" });
       }
     </script>
   </body>
