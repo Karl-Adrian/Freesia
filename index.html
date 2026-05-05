@@ -10,18 +10,15 @@
     />
     <style>
       :root {
-        --green-deep: #0a3a5c; /* deep navy-blue for dark backgrounds */
-        --green-mid: #009ada; /* freesia blue — primary brand color */
-        --green-fresh: #56ab21; /* freesia green — accent/CTA color */
-        --green-light: #a8d8a8; /* light green tint */
-        --cream: #fff4fd; /* rgb(255,244,253) — brand blush */
-        --warm-white: #fef9ff; /* very light blush-white */
+        --green-deep: #0a3a5c;
+        --green-mid: #009ada;
+        --green-fresh: #56ab21;
+        --green-light: #a8d8a8;
+        --cream: #fff4fd;
+        --warm-white: #fef9ff;
         --charcoal: #1a1a2e;
         --text-muted: #4a5a6a;
-        --gold: #009ada;
-        --accent: #56ab21;
       }
-
       *,
       *::before,
       *::after {
@@ -29,11 +26,9 @@
         margin: 0;
         padding: 0;
       }
-
       html {
         scroll-behavior: smooth;
       }
-
       body {
         font-family: "DM Sans", sans-serif;
         background: var(--warm-white);
@@ -60,7 +55,6 @@
       nav.scrolled {
         box-shadow: 0 4px 30px rgba(10, 58, 92, 0.12);
       }
-
       .logo {
         display: flex;
         align-items: center;
@@ -76,6 +70,11 @@
         justify-content: center;
         font-size: 1.1rem;
         flex-shrink: 0;
+      }
+      .logo-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
       .logo-text {
         font-family: "Playfair Display", serif;
@@ -94,6 +93,12 @@
         text-transform: uppercase;
       }
 
+      /* Nav right — wraps links + divider + social icons + hamburger */
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1.4rem;
+      }
       .nav-links {
         display: flex;
         gap: 2.2rem;
@@ -121,7 +126,6 @@
       .nav-links a:hover::after {
         right: 0;
       }
-
       .nav-cta {
         background: var(--green-mid);
         color: white !important;
@@ -139,6 +143,104 @@
       .nav-cta:hover {
         background: var(--green-deep) !important;
         transform: translateY(-1px);
+      }
+
+      /* ── SOCIAL ICONS — shared base ── */
+      .social-icons {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+      }
+      .social-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition:
+          transform 0.2s,
+          background 0.22s,
+          border-color 0.22s;
+        flex-shrink: 0;
+      }
+      .social-icon svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+        display: block;
+      }
+
+      /* Nav variant — subtle on blush background */
+      .nav-social .social-icon {
+        background: rgba(10, 58, 92, 0.07);
+        color: var(--green-deep);
+        border: 1px solid rgba(10, 58, 92, 0.12);
+      }
+      .nav-social .social-icon:hover {
+        transform: translateY(-2px);
+      }
+      .nav-social .si-facebook:hover {
+        background: #1877f2;
+        color: #fff;
+        border-color: #1877f2;
+      }
+      .nav-social .si-instagram:hover {
+        background: radial-gradient(
+          circle at 30% 107%,
+          #fdf497 0%,
+          #fdf497 5%,
+          #fd5949 45%,
+          #d6249f 60%,
+          #285aeb 90%
+        );
+        color: #fff;
+        border-color: transparent;
+      }
+      .nav-social .si-whatsapp:hover {
+        background: #25d366;
+        color: #fff;
+        border-color: #25d366;
+      }
+
+      /* Footer variant — light on dark background */
+      .footer-social .social-icon {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      .footer-social .social-icon:hover {
+        transform: translateY(-2px);
+      }
+      .footer-social .si-facebook:hover {
+        background: #1877f2;
+        color: #fff;
+        border-color: #1877f2;
+      }
+      .footer-social .si-instagram:hover {
+        background: radial-gradient(
+          circle at 30% 107%,
+          #fdf497 0%,
+          #fdf497 5%,
+          #fd5949 45%,
+          #d6249f 60%,
+          #285aeb 90%
+        );
+        color: #fff;
+        border-color: transparent;
+      }
+      .footer-social .si-whatsapp:hover {
+        background: #25d366;
+        color: #fff;
+        border-color: #25d366;
+      }
+
+      .nav-divider {
+        width: 1px;
+        height: 22px;
+        background: rgba(10, 58, 92, 0.15);
+        flex-shrink: 0;
       }
 
       .nav-toggle {
@@ -186,8 +288,6 @@
             transparent 60%
           );
       }
-
-      /* decorative circles */
       .hero-circle {
         position: absolute;
         border-radius: 50%;
@@ -214,7 +314,6 @@
         top: 50%;
         transform: translateY(-50%);
       }
-
       .hero-content {
         position: relative;
         z-index: 2;
@@ -239,7 +338,6 @@
         content: "✦";
         font-size: 0.6rem;
       }
-
       .hero h1 {
         font-family: "Playfair Display", serif;
         font-size: clamp(2.8rem, 5vw, 4.5rem);
@@ -255,7 +353,6 @@
         color: var(--green-fresh);
         display: block;
       }
-
       .hero p {
         color: rgba(255, 255, 255, 0.65);
         font-size: 1.05rem;
@@ -266,7 +363,6 @@
         opacity: 0;
         animation: fadeUp 0.7s 0.5s forwards;
       }
-
       .hero-btns {
         display: flex;
         gap: 1rem;
@@ -309,7 +405,6 @@
         border-color: var(--green-fresh);
         background: rgba(86, 171, 33, 0.1);
       }
-
       .hero-visual {
         position: relative;
         z-index: 2;
@@ -319,7 +414,6 @@
         opacity: 0;
         animation: fadeIn 1s 0.5s forwards;
       }
-
       .hero-card {
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(255, 255, 255, 0.1);
@@ -352,7 +446,6 @@
         background: rgba(255, 255, 255, 0.08);
         margin: 1.8rem 0;
       }
-
       .hero-clients {
         color: rgba(255, 255, 255, 0.45);
         font-size: 0.75rem;
@@ -378,7 +471,6 @@
       section {
         padding: 6rem 5%;
       }
-
       .section-tag {
         display: inline-flex;
         align-items: center;
@@ -397,7 +489,6 @@
         height: 1.5px;
         background: var(--green-fresh);
       }
-
       h2 {
         font-family: "Playfair Display", serif;
         font-size: clamp(2rem, 3.5vw, 3rem);
@@ -424,7 +515,6 @@
         margin-bottom: 1.2rem;
         font-weight: 300;
       }
-
       .mission-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -459,7 +549,6 @@
         color: var(--text-muted);
         line-height: 1.6;
       }
-
       .about-visual {
         position: relative;
       }
@@ -505,7 +594,6 @@
         position: relative;
         z-index: 1;
       }
-
       .about-badge {
         position: absolute;
         bottom: -1.5rem;
@@ -544,7 +632,6 @@
         line-height: 1.7;
         font-weight: 300;
       }
-
       .services-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -579,7 +666,6 @@
         transform: translateY(-4px);
         box-shadow: 0 12px 40px rgba(10, 58, 92, 0.08);
       }
-
       .service-emoji {
         font-size: 2rem;
         margin-bottom: 1.2rem;
@@ -636,7 +722,6 @@
       .why-text .section-tag::before {
         background: var(--green-light);
       }
-
       .why-features {
         display: flex;
         flex-direction: column;
@@ -695,7 +780,6 @@
         margin-bottom: 3rem;
         font-weight: 300;
       }
-
       .clients-row {
         display: flex;
         flex-wrap: wrap;
@@ -748,7 +832,6 @@
         font-weight: 300;
         margin-bottom: 1.5rem;
       }
-
       .steps {
         display: flex;
         flex-direction: column;
@@ -785,7 +868,6 @@
         color: var(--charcoal);
         font-weight: 400;
       }
-
       .pricing-card {
         background: var(--green-deep);
         border-radius: 24px;
@@ -871,7 +953,6 @@
         font-weight: 300;
         margin-bottom: 2rem;
       }
-
       .contact-cards {
         display: flex;
         flex-direction: column;
@@ -919,7 +1000,6 @@
       .contact-info a:hover {
         color: var(--green-mid);
       }
-
       .contact-form {
         background: white;
         border-radius: 24px;
@@ -1012,6 +1092,12 @@
       footer p {
         font-size: 0.82rem;
       }
+      .footer-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.9rem;
+      }
       .footer-links {
         display: flex;
         gap: 1.5rem;
@@ -1045,7 +1131,6 @@
           opacity: 1;
         }
       }
-
       .reveal {
         opacity: 0;
         transform: translateY(30px);
@@ -1058,8 +1143,12 @@
         transform: translateY(0);
       }
 
-      /* ── MOBILE MENU ── */
+      /* ── MOBILE ── */
       @media (max-width: 768px) {
+        .nav-divider,
+        .nav-social {
+          display: none;
+        }
         .nav-links {
           display: none;
           flex-direction: column;
@@ -1093,7 +1182,6 @@
         .nav-toggle {
           display: flex;
         }
-
         .hero {
           grid-template-columns: 1fr;
           padding-top: 6rem;
@@ -1107,7 +1195,6 @@
         .hero-circle-3 {
           display: none;
         }
-
         #about {
           grid-template-columns: 1fr;
           gap: 3rem;
@@ -1120,17 +1207,14 @@
         .mission-grid {
           grid-template-columns: 1fr;
         }
-
         .why-inner {
           grid-template-columns: 1fr;
           gap: 3rem;
         }
-
         .pricing-inner {
           grid-template-columns: 1fr;
           gap: 3rem;
         }
-
         .contact-inner {
           grid-template-columns: 1fr;
           gap: 3rem;
@@ -1138,10 +1222,12 @@
         .form-row {
           grid-template-columns: 1fr;
         }
-
         footer {
           flex-direction: column;
           text-align: center;
+        }
+        .footer-right {
+          align-items: center;
         }
       }
 
@@ -1172,8 +1258,6 @@
         font-weight: 300;
         line-height: 1.7;
       }
-
-      /* Masonry grid */
       .gallery-grid {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -1226,42 +1310,38 @@
         content: "📸";
         font-size: 0.75rem;
       }
-
-      /* Grid placement */
       .gi-1 {
-        grid-column: 1 / 6;
-        grid-row: 1 / 3;
+        grid-column: 1/6;
+        grid-row: 1/3;
       }
       .gi-2 {
-        grid-column: 6 / 9;
-        grid-row: 1 / 2;
+        grid-column: 6/9;
+        grid-row: 1/2;
       }
       .gi-3 {
-        grid-column: 9 / 13;
-        grid-row: 1 / 2;
+        grid-column: 9/13;
+        grid-row: 1/2;
       }
       .gi-4 {
-        grid-column: 6 / 10;
-        grid-row: 2 / 4;
+        grid-column: 6/10;
+        grid-row: 2/4;
       }
       .gi-5 {
-        grid-column: 10/ 13;
-        grid-row: 2 / 3;
+        grid-column: 10/13;
+        grid-row: 2/3;
       }
       .gi-6 {
-        grid-column: 1 / 4;
-        grid-row: 3 / 4;
+        grid-column: 1/4;
+        grid-row: 3/4;
       }
       .gi-7 {
-        grid-column: 4 / 6;
-        grid-row: 3 / 4;
+        grid-column: 4/6;
+        grid-row: 3/4;
       }
       .gi-8 {
-        grid-column: 10/ 13;
-        grid-row: 3 / 4;
+        grid-column: 10/13;
+        grid-row: 3/4;
       }
-
-      /* Carousel strip */
       .gallery-strip-wrap {
         position: relative;
       }
@@ -1295,7 +1375,6 @@
       .gallery-strip-item:hover img {
         transform: scale(1.08);
       }
-
       .strip-btn {
         position: absolute;
         top: 50%;
@@ -1325,8 +1404,6 @@
       .strip-btn-next {
         right: -16px;
       }
-
-      /* Lightbox */
       .lightbox {
         display: none;
         position: fixed;
@@ -1376,7 +1453,6 @@
         font-size: 0.85rem;
         text-align: center;
       }
-
       @media (max-width: 900px) {
         .gallery-grid {
           grid-template-columns: 1fr 1fr;
@@ -1395,11 +1471,10 @@
           height: 180px;
         }
         .gi-1 {
-          grid-column: 1 / 3;
+          grid-column: 1/3;
           height: 220px;
         }
       }
-
       @media (max-width: 560px) {
         .gallery-grid {
           grid-template-columns: 1fr;
@@ -1425,26 +1500,84 @@
     </style>
   </head>
   <body>
+    <!-- SVG SPRITE — social icons, hidden, reused via <use> -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      style="display: none"
+      aria-hidden="true"
+    >
+      <symbol id="icon-facebook" viewBox="0 0 24 24">
+        <path
+          d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.514c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"
+        />
+      </symbol>
+      <symbol id="icon-instagram" viewBox="0 0 24 24">
+        <path
+          d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+        />
+      </symbol>
+      <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+        />
+      </symbol>
+    </svg>
+
     <!-- NAV -->
     <nav id="navbar">
       <a href="#" class="logo">
-        <div class="logo-icon"><img src="photos/Freesia Logo.svg" /></div>
-        <div class="logo-text">
-          Freesia
-          <span>Cleaning Services Ltd</span>
+        <div class="logo-icon">
+          <img src="photos/Freesia Logo.svg" alt="Freesia logo" />
         </div>
+        <div class="logo-text">Freesia <span>Cleaning Services Ltd</span></div>
       </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#why">Why Us</a></li>
-        <li><a href="#clients">Clients</a></li>
-        <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
-      </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+
+      <div class="nav-right">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#clients">Clients</a></li>
+          <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+        </ul>
+
+        <div class="nav-divider"></div>
+
+        <div class="social-icons nav-social">
+          <a
+            href="https://facebook.com/freesiacleaning"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon si-facebook"
+            aria-label="Visit us on Facebook"
+          >
+            <svg viewBox="0 0 24 24"><use href="#icon-facebook" /></svg>
+          </a>
+          <a
+            href="https://instagram.com/freesiacleaning"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon si-instagram"
+            aria-label="Visit us on Instagram"
+          >
+            <svg viewBox="0 0 24 24"><use href="#icon-instagram" /></svg>
+          </a>
+          <a
+            href="https://wa.me/254700755667"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon si-whatsapp"
+            aria-label="Chat with us on WhatsApp"
+          >
+            <svg viewBox="0 0 24 24"><use href="#icon-whatsapp" /></svg>
+          </a>
+        </div>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
 
     <!-- HERO -->
@@ -1452,13 +1585,9 @@
       <div class="hero-circle hero-circle-1"></div>
       <div class="hero-circle hero-circle-2"></div>
       <div class="hero-circle hero-circle-3"></div>
-
       <div class="hero-content">
         <div class="hero-tag">Est. 2019 · Nairobi, Kenya</div>
-        <h1>
-          Cleaning Beyond
-          <em>Expectation</em>
-        </h1>
+        <h1>Cleaning Beyond <em>Expectation</em></h1>
         <p>
           Your comfort is our goal. We deliver reliable, high-quality cleaning
           and sanitation solutions for offices, residences, and industrial
@@ -1469,7 +1598,6 @@
           <a href="#services" class="btn-secondary">Our Services</a>
         </div>
       </div>
-
       <div class="hero-visual">
         <div class="hero-card">
           <div class="hero-stat">
@@ -1531,7 +1659,6 @@
           </div>
         </div>
       </div>
-
       <div class="about-visual reveal">
         <div class="about-img-block">
           <div class="about-quote">Your Comfort is our Goal</div>
@@ -1542,8 +1669,7 @@
           </p>
         </div>
         <div class="about-badge">
-          <span class="num">4+</span>
-          <span class="lbl">Provinces Covered</span>
+          <span class="num">4+</span><span class="lbl">Provinces Covered</span>
         </div>
       </div>
     </section>
@@ -1558,7 +1684,6 @@
           the expertise and equipment to handle any scope, any scale.
         </p>
       </div>
-
       <div class="services-grid">
         <div class="service-card reveal">
           <div class="service-emoji">🏢</div>
@@ -1637,8 +1762,6 @@
           standard we bring to every space we touch.
         </p>
       </div>
-
-      <!-- Masonry Grid -->
       <div class="gallery-grid reveal">
         <div class="gallery-item gi-1" onclick="openLightbox(this)">
           <img
@@ -1721,8 +1844,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Scrollable Strip -->
       <div class="gallery-strip-wrap reveal" style="margin-top: 0">
         <button class="strip-btn strip-btn-prev" onclick="scrollStrip(-1)">
           &#8592;
@@ -1766,14 +1887,14 @@
           <div class="gallery-strip-item" onclick="openLightbox(this)">
             <img
               src="photos/cleaning supplies.jpeg"
-              alt="Hotel room cleaning"
+              alt="Cleaning supplies"
               loading="lazy"
             />
           </div>
           <div class="gallery-strip-item" onclick="openLightbox(this)">
             <img
               src="photos/mop and bucket.jpeg"
-              alt="Compound cleaning outdoors"
+              alt="Compound cleaning"
               loading="lazy"
             />
           </div>
@@ -1911,7 +2032,6 @@
             </div>
           </div>
         </div>
-
         <div class="pricing-card reveal">
           <div class="pricing-badge">Get Started</div>
           <h3>Request a Free Assessment</h3>
@@ -1935,7 +2055,6 @@
             Ready to experience the Freesia difference? Reach out to our team
             directly or fill in the form and we will get back to you promptly.
           </p>
-
           <div class="contact-cards">
             <div class="contact-card">
               <div class="contact-icon">👩‍💼</div>
@@ -1953,7 +2072,7 @@
               <div class="contact-info">
                 <h4>Operations Manager</h4>
                 <p>Fredrick Kimondiu</p>
-                <p><a href="tel:+254724866375">+254 114 765 916</a></p>
+                <p><a href="tel:+254114765916">+254 114 765 916</a></p>
               </div>
             </div>
             <div class="contact-card">
@@ -1966,16 +2085,13 @@
             </div>
           </div>
         </div>
-
         <div class="contact-form reveal">
           <h3>Send Us a Message</h3>
-
           <form
             id="contactForm"
             action="https://formsubmit.co/freesiacleaningservices3@gmail.com"
             method="POST"
           >
-            <!-- FormSubmit config -->
             <input
               type="hidden"
               name="_subject"
@@ -1983,11 +2099,10 @@
             />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
-
             <div class="form-row">
               <div class="form-group">
-                <label>First Name</label>
-                <input
+                <label>First Name</label
+                ><input
                   type="text"
                   name="first_name"
                   placeholder="John"
@@ -1995,8 +2110,8 @@
                 />
               </div>
               <div class="form-group">
-                <label>Last Name</label>
-                <input
+                <label>Last Name</label
+                ><input
                   type="text"
                   name="last_name"
                   placeholder="Doe"
@@ -2005,8 +2120,8 @@
               </div>
             </div>
             <div class="form-group">
-              <label>Email Address</label>
-              <input
+              <label>Email Address</label
+              ><input
                 type="email"
                 name="email"
                 placeholder="john@company.com"
@@ -2014,8 +2129,8 @@
               />
             </div>
             <div class="form-group">
-              <label>Phone Number</label>
-              <input type="tel" name="phone" placeholder="+254 7XX XXX XXX" />
+              <label>Phone Number</label
+              ><input type="tel" name="phone" placeholder="+254 7XX XXX XXX" />
             </div>
             <div class="form-group">
               <label>Service Needed</label>
@@ -2031,8 +2146,8 @@
               </select>
             </div>
             <div class="form-group">
-              <label>Message</label>
-              <textarea
+              <label>Message</label
+              ><textarea
                 name="message"
                 placeholder="Tell us about your property and cleaning requirements..."
               ></textarea>
@@ -2041,8 +2156,6 @@
               Send Message
             </button>
           </form>
-
-          <!-- Success message shown after submission -->
           <div
             id="formSuccess"
             style="display: none; text-align: center; padding: 2.5rem 0"
@@ -2077,7 +2190,9 @@
     <!-- FOOTER -->
     <footer>
       <a href="#" class="logo">
-        <div class="logo-icon"><img src="photos/Freesia Logo.svg" /></div>
+        <div class="logo-icon">
+          <img src="photos/Freesia Logo.svg" alt="Freesia logo" />
+        </div>
         <div class="logo-text" style="color: white">
           Freesia
           <span style="color: rgba(255, 255, 255, 0.4)"
@@ -2085,24 +2200,56 @@
           >
         </div>
       </a>
+
       <p style="font-size: 0.8rem">
         © 2026 Freesia Cleaning Services Ltd. All rights reserved.
       </p>
-      <div class="footer-links">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
+
+      <div class="footer-right">
+        <!-- Social icons in footer -->
+        <div class="social-icons footer-social">
+          <a
+            href="https://facebook.com/freesiacleaning"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon si-facebook"
+            aria-label="Visit us on Facebook"
+          >
+            <svg viewBox="0 0 24 24"><use href="#icon-facebook" /></svg>
+          </a>
+          <a
+            href="https://instagram.com/freesiacleaning"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon si-instagram"
+            aria-label="Visit us on Instagram"
+          >
+            <svg viewBox="0 0 24 24"><use href="#icon-instagram" /></svg>
+          </a>
+          <a
+            href="https://wa.me/254700755667"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon si-whatsapp"
+            aria-label="Chat with us on WhatsApp"
+          >
+            <svg viewBox="0 0 24 24"><use href="#icon-whatsapp" /></svg>
+          </a>
+        </div>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
       </div>
     </footer>
 
     <script>
-      // Nav scroll shadow
       const navbar = document.getElementById("navbar");
       window.addEventListener("scroll", () => {
         navbar.classList.toggle("scrolled", window.scrollY > 20);
       });
 
-      // Mobile menu toggle
       const toggle = document.getElementById("navToggle");
       const links = document.getElementById("navLinks");
       toggle.addEventListener("click", () => {
@@ -2112,7 +2259,6 @@
         a.addEventListener("click", () => links.classList.remove("open"));
       });
 
-      // Scroll reveal
       const reveals = document.querySelectorAll(".reveal");
       const observer = new IntersectionObserver(
         (entries) => {
@@ -2125,42 +2271,31 @@
         },
         { threshold: 0.1, rootMargin: "0px 0px -60px 0px" },
       );
-
       reveals.forEach((el) => observer.observe(el));
 
-      // Form submit — uses FormSubmit via fetch (no page redirect)
       const contactForm = document.getElementById("contactForm");
       const submitBtn = document.getElementById("submitBtn");
       const formSuccess = document.getElementById("formSuccess");
-
       if (contactForm) {
         contactForm.addEventListener("submit", async function (e) {
           e.preventDefault();
-
-          // Button loading state
           submitBtn.textContent = "Sending…";
           submitBtn.disabled = true;
           submitBtn.style.opacity = "0.75";
-
           const formData = new FormData(contactForm);
-
           try {
             const response = await fetch(contactForm.action, {
               method: "POST",
               body: formData,
               headers: { Accept: "application/json" },
             });
-
             if (response.ok) {
-              // Hide form, show success
               contactForm.style.display = "none";
               formSuccess.style.display = "block";
             } else {
               throw new Error("Server error");
             }
           } catch (err) {
-            // Fallback: restore button and show error
-            submitBtn.textContent = "Send Message";
             submitBtn.disabled = false;
             submitBtn.style.opacity = "";
             submitBtn.textContent = "⚠ Failed — please try again";
@@ -2171,12 +2306,8 @@
         });
       }
 
-      // Lightbox
       function openLightbox(el) {
         const img = el.querySelector("img");
-        const label = el.querySelector(
-          ".gallery-item-label, .gallery-strip-item img",
-        );
         document.getElementById("lightboxImg").src = img.src.replace(
           /w=\d+/,
           "w=1400",
@@ -2201,10 +2332,10 @@
           closeLightbox({ target: document.getElementById("lightbox") });
       });
 
-      // Strip scroll
       function scrollStrip(dir) {
-        const strip = document.getElementById("galleryStrip");
-        strip.scrollBy({ left: dir * 560, behavior: "smooth" });
+        document
+          .getElementById("galleryStrip")
+          .scrollBy({ left: dir * 560, behavior: "smooth" });
       }
     </script>
   </body>
